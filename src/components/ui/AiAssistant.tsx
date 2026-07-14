@@ -289,7 +289,7 @@ export default function AiAssistant() {
 
             <p className="relative flex items-center justify-center gap-1.5 pb-2.5 font-mono text-[10px] uppercase tracking-wider text-secondary/70">
               <span className="h-1.5 w-1.5 rounded-full bg-[#00cea8]" />
-              Powered By Claude · answers may be imperfect
+              Powered By Claude
             </p>
           </motion.div>
         )}

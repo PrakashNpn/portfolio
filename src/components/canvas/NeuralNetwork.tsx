@@ -136,7 +136,7 @@ export default function NeuralNetwork({ className }: { className?: string }) {
         const px = a.x + (b.x - a.x) * p.t;
         const py = a.y + (b.y - a.y) * p.t;
         const g = ctx.createRadialGradient(px, py, 0, px, py, 6);
-        g.addColorStop(0, "rgba(0,206,168,0.9)");
+        g.addColorStop(0, "rgba(196,181,255,0.9)");
         g.addColorStop(1, "rgba(0,206,168,0)");
         ctx.fillStyle = g;
         ctx.beginPath();
