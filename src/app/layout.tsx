@@ -23,21 +23,33 @@ const jetbrainsMono = JetBrains_Mono({
 
 const SITE_URL = "https://thihan-portfolio.vercel.app";
 
+// Search results show ~155 characters, so this is a short pitch, not the full bio.
+const DESCRIPTION =
+  "Thi Han is a Full-Stack & AI Developer in Bangkok who turns real business problems " +
+  "into production web apps and LLM-powered features.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: `${profile.name} | Portfolio`,
     template: `%s | ${profile.name}`,
   },
-  description: profile.about,
+  description: DESCRIPTION,
   keywords: [
     profile.name,
-    "Web Developer",
-    "React Native Developer",
-    "SEO",
-    "Portfolio",
+    "Full-Stack Developer",
+    "AI Engineer",
+    "AI Developer",
+    "AI-Enabled Full-Stack Developer",
     "Next.js",
-    "Three.js",
+    "TypeScript",
+    "Supabase",
+    "Claude API",
+    "RAG",
+    "LLM",
+    "n8n",
+    "Bangkok",
+    "Portfolio",
   ],
   authors: [{ name: profile.name }],
   creator: profile.name,
@@ -45,13 +57,13 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     title: `${profile.name} | Portfolio`,
-    description: profile.about,
+    description: DESCRIPTION,
     siteName: `${profile.name} Portfolio`,
   },
   twitter: {
     card: "summary_large_image",
     title: `${profile.name} | Portfolio`,
-    description: profile.about,
+    description: DESCRIPTION,
   },
   robots: { index: true, follow: true },
 };

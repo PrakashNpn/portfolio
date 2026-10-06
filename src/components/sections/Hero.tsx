@@ -86,15 +86,15 @@ export default function Hero() {
             AI Engineer · Full-Stack Developer
           </motion.p>
 
-          <motion.p
+          <motion.h1
             variants={item}
             className={`${styles.heroSubText} flex flex-wrap items-baseline gap-x-3`}
           >
-            <span>Hi, I&apos;m</span>
+            <span>Hi, I&apos;m</span>{" "}
             <span className="text-[30px] font-extrabold text-[#915EFF] xs:text-[36px] sm:text-[44px] lg:text-[52px]">
               {profile.name}
             </span>
-          </motion.p>
+          </motion.h1>
 
           <motion.div variants={item} className={`${styles.heroHeadText} mt-5`}>
             <span className="flex flex-wrap items-end gap-x-3">
@@ -107,7 +107,10 @@ export default function Hero() {
                 </span>
               </span>
             </span>
-            <span className="mt-1 block">that deliver real results.</span>
+            <span className="mt-1 block">
+              that solve real <br className="hidden lg:inline" />
+              problems.
+            </span>
           </motion.div>
 
           <motion.div
@@ -165,7 +168,7 @@ export default function Hero() {
       </p>
 
       {/* Scroll indicator */}
-      <div className="absolute inset-x-0 bottom-6 z-20 hidden w-full items-center justify-center lg:flex">
+      <div className="absolute inset-x-0 bottom-6 z-[15] hidden w-full items-center justify-center lg:flex">
         <a href="#about" aria-label="Scroll to about" className="pointer-events-auto">
           <div className="flex h-[60px] w-[32px] items-start justify-center rounded-3xl border-4 border-secondary p-2">
             <motion.div

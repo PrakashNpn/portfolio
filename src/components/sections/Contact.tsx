@@ -17,7 +17,7 @@ const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 const initialForm = { name: "", email: "", message: "" };
 
 const fieldClass =
-  "rounded-xl border border-white/10 bg-black-200/40 px-4 py-3.5 text-[15px] text-white placeholder:text-secondary/50 outline-none transition-colors duration-200 focus:border-[#915EFF]/60 focus:ring-2 focus:ring-[#915EFF]/20";
+  "w-full min-w-0 rounded-xl border border-white/10 bg-black-200/40 px-4 py-3.5 text-[15px] text-white placeholder:text-secondary/50 outline-none transition-colors duration-200 focus:border-[#915EFF]/60 focus:ring-2 focus:ring-[#915EFF]/20";
 
 const strokeIcon = {
   fill: "none",
@@ -258,7 +258,7 @@ function Contact() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#00cea8] opacity-75" />
                 <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#00cea8]" />
               </span>
-              Available for new projects
+              Open to full-time roles
             </span>
 
             <h3 className="mt-6 text-[24px] font-bold text-white sm:text-[26px]">

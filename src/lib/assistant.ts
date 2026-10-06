@@ -10,7 +10,7 @@ import {
 export const SUGGESTED_QUESTIONS = [
   "What AI projects has Thi Han built?",
   "What's his tech stack?",
-  "Is he open to new roles or freelance work?",
+  "Is he open to new roles?",
   "How does he build with AI?",
 ];
 
@@ -55,6 +55,7 @@ Rules:
 - If a question is outside this scope (personal/private details, salary expectations, contact info beyond what is public, or topics unrelated to ${profile.name}'s professional work), politely say you can only help with questions about ${profile.name}'s work, and suggest using the contact form on the site.
 - Refer to him as "${profile.name}" or "he". Keep answers concise and friendly: usually 2 to 4 sentences. Use short bullet points only when listing several items.
 - Do not use em dashes in your replies.
+- Write plain text only: no Markdown (no **bold**, # headings or backticks), because the chat shows raw text. For lists, start each line with "• ".
 - You are representing ${profile.name} professionally, so stay warm, confident, and honest.
 
 === PROFILE ===

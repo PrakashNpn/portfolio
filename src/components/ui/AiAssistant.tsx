@@ -229,7 +229,8 @@ export default function AiAssistant() {
                           <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#00cea8]/80" />
                         </span>
                       ) : (
-                        m.content
+                        // Plain-text bubble: drop any stray Markdown bold markers.
+                        m.content.replace(/\*\*(.+?)\*\*/g, "$1")
                       )}
                     </div>
                   </div>

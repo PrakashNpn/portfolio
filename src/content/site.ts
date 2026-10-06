@@ -26,23 +26,24 @@ import type {
  * ------------------------------------------------------------------------ */
 export const profile: Profile = {
   name: "Thi Han", // TODO: your full name
-  role: "Full-Stack Developer & AI Automation Engineer", // TODO: your title
+  role: "Full-Stack Developer & AI Engineer",
   // The hero renders: "Shaping <rotating words> into Real Projects that Deliver Results"
   headline: ["into Real Projects", "that Deliver Results"], // TODO
   about:
-    "I'm a Full-Stack Developer who loves turning ideas into fast, polished web and " +
-    "mobile apps, and lately into AI-powered tools and automations that save real " +
-    "time. I work end-to-end with React, Next.js, Node.js and modern databases, and I " +
-    "bring in AI (agents, RAG, prompt engineering and workflow automation) to make " +
-    "products genuinely smarter. As a freelancer, I help brands and businesses ship " +
-    "modern websites, mobile apps, and automations that make an impact.", // TODO: your bio
+    "I'm a full-stack developer with 3+ years of experience turning ideas into " +
+    "production web apps, and today most of my work sits where solid engineering " +
+    "meets AI. I enjoy owning a product end to end: shaping the data model, building " +
+    "the interface, bringing in LLMs where they make the product better, and keeping " +
+    "a human in the loop where trust matters. I work comfortably across languages and " +
+    "frameworks and pick whatever fits the problem best. I'm looking for a team where " +
+    "I can build AI-powered products that real people rely on every day.",
   availability:
-    "Actively looking for a full-time role (Full-Stack Developer / AI Engineer positions). " +
-    "Also open to freelance or contract projects on the side.",
+    "Open to new full-time opportunities as a Full-Stack Developer, AI-Enabled " +
+    "Full-Stack Developer or AI Engineer.",
   email: "thihan839@gmail.com",
-  location: "Onsite Bangkok, Remote & Worldwide",
+  location: "Bangkok, Thailand · Open to remote",
   resumeUrl: "/resume.pdf", // replace /public/resume.pdf with your latest CV
-  avatar: "/profile/myProfile.png",
+  avatar: "/profile/profile.png",
 };
 
 /* --------------------------------------------------------------------------
@@ -62,7 +63,7 @@ export const navLinks: NavLink[] = [
  * ------------------------------------------------------------------------ */
 export const socials: SocialLink[] = [
   { name: "GitHub", url: "https://github.com/PrakashNpn", icon: "/icons/github.png" },
-  { name: "LinkedIn", url: "https://www.linkedin.com/in/thi-han-a20866176/" },
+  { name: "LinkedIn", url: "https://www.linkedin.com/in/thi-han839" },
   { name: "WhatsApp", url: "https://wa.me/66814302658" },
 ];
 
@@ -172,7 +173,7 @@ export const skillGroups: SkillGroup[] = [
       "TypeScript",
       "JavaScript",
       "PHP",
-      "Python (basic)",
+      "Python",
       "Tailwind CSS",
       "Framer Motion",
       "Node.js",
@@ -191,13 +192,23 @@ export const skillGroups: SkillGroup[] = [
       "Webflow",
       "Jira",
       "ClickUp",
-      "Others",
     ],
   },
   {
-    title: "Cloud & Tools",
+    title: "Cloud, DevOps & Tools",
     icon: "cloud",
-    skills: ["Vercel", "Docker", "Linux", "Cloud VPS", "Git", "GitHub", "SSH", "SEO"],
+    skills: [
+      "Vercel",
+      "Docker",
+      "Linux",
+      "Cloud VPS",
+      "Git",
+      "GitHub",
+      "GitHub Actions (CI/CD)",
+      "Jest",
+      "SSH",
+      "SEO",
+    ],
   },
 ];
 
@@ -206,53 +217,63 @@ export const skillGroups: SkillGroup[] = [
  * ------------------------------------------------------------------------ */
 export const experiences: Experience[] = [
   {
-    title: "Student Internship",
-    companyName: "Marter Solutions",
+    title: "Web Development Intern",
+    companyName: "Marter Solutions, Mandalay",
     icon: "/company/marterSolutions.png",
     iconBg: "#383E56",
     date: "Jul 2020 - Oct 2020",
     points: [
-      "Joined as a student intern and learned programming and web development.",
-      "Learned how to work as a team and solve real-world problems and challenges.",
-      "Worked as an assistant on an MRCCI project alongside senior developers.",
+      "Supported senior developers on a client project for MRCCI, contributing to frontend and backend tasks.",
+      "Learned team workflows and real-world problem solving on production client work.",
     ],
   },
   {
-    title: "Web Development Internship",
-    companyName: "Clouud Solutions",
+    title: "Junior Full-Stack Developer Intern",
+    companyName: "Clouud Solutions, India",
     icon: "/company/clouudSolutions.png",
     iconBg: "#E6DEDD",
     date: "Dec 2021 - Feb 2022",
     points: [
-      "Worked closely with team members to understand all modules of the client CRM project.",
-      "Collaborated with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Worked as a junior full-stack developer using Laravel, Vue.js, Inertia.js, MySQL, and Tailwind CSS.",
+      "Developed and tested features for a client CRM using Laravel, Vue.js, Inertia.js, MySQL and Tailwind CSS.",
+      "Worked alongside designers and product managers to understand and deliver across the CRM's modules.",
     ],
   },
   {
-    title: "Full Stack Developer",
-    companyName: "mmRoute",
+    title: "Full-Stack Developer",
+    companyName: "mmRoute Technologies, Yangon",
     icon: "/company/mmRoute.png",
     iconBg: "#383E56",
     date: "Oct 2022 - Feb 2024",
     points: [
-      "Developed responsive, mobile-friendly websites using PHP, HTML, CSS, and JavaScript.",
-      "Optimized website performance and applied SEO best practices.",
-      "Ensured site security with regular updates, backups, and fixes.",
-      "Integrated third-party APIs, payment gateways, and tools.",
+      "Built responsive, mobile-friendly business websites with PHP, JavaScript, HTML and CSS.",
+      "Integrated third-party APIs, payment gateways and business tools.",
+      "Handled performance tuning, SEO, security updates and backups.",
     ],
   },
   {
-    title: "Freelancer",
-    companyName: "Freelance",
+    title: "Freelance Full-Stack Developer",
+    companyName: "Freelance, Bangkok",
     icon: "/services/freelance.png",
     iconBg: "#E6DEDD",
-    date: "Feb 2025 - Present",
+    date: "May 2024 - Sep 2025",
     points: [
-      "Freelance full-stack and AI engineer serving education and real estate clients.",
-      "Shipped an AI advisor chatbot and career tools powered by Claude and RAG.",
-      "Built a React Native app and SEO-driven WordPress sites for other clients.",
-      "Handle every project, from planning through deployment and support.",
+      "Built and launched a real estate platform for Siribaan Property Group, with property search, detail pages and inquiry capture.",
+      "Built an admin panel for managing 50+ property listings.",
+      "Integrated Supabase database and storage and owned Vercel deployment and production troubleshooting.",
+      "Delivered a React Native mobile app and SEO-focused WordPress websites for other clients.",
+    ],
+  },
+  {
+    title: "Full-Stack & AI Developer",
+    companyName: "Saturday Education Consulting, Bangkok",
+    icon: "/company/saturdayEducation.png",
+    iconBg: "#FFFFFF",
+    date: "Oct 2025 - Present",
+    points: [
+      "Led development of the company's study-abroad platform in Next.js, TypeScript and Supabase, with search across 700+ universities and 60,000+ courses.",
+      "Designed psychometric career assessments that generate AI career and university recommendations and send counselors a profile report of each student's interests, skills and personality.",
+      "Shipped a RAG-based AI university-advisor chatbot grounded in the platform's university and course data, plus document summarization and PDF report generation.",
+      "Built an n8n agent on the Claude API that drafts replies to university partnership emails for human approval, cutting reply time from ~20 to ~3 min per email.",
     ],
   },
 ];
@@ -264,16 +285,16 @@ export const projects: Project[] = [
   {
     name: "Saturday Education Consulting",
     description:
-      "An international education consulting platform that helps students study abroad. Beyond a clean, trustworthy site, I built the AI layer: a university-advisor chatbot and AI-assisted career tools that guide students from choosing a program through applications.",
-    category: "Client · Education",
+      "The study-abroad platform I build at Saturday Education Consulting. Beyond a clean, trustworthy site, I built the AI layer: a RAG university-advisor chatbot and AI career tools that guide students from choosing a program through applications.",
+    category: "Full-Time · Education",
     icon: "education",
-    // badge: "",
-    // TODO: adjust to the exact features you built
+    badge: "AI-Powered",
     features: [
-      "AI-powered university advisor chatbot",
-      "AI career assessment and guidance",
+      "Search across 700+ universities and 60,000+ courses",
+      "RAG-based AI university advisor chatbot",
+      "AI career assessment with counselor profile reports",
+      "n8n + Claude partnership email agent",
       "Job outlook and market research tool",
-      "Universities and program search",
       "Study destination guides",
       "Online consultation booking",
       "Admin dashboard for students, universities, and leads",
@@ -283,14 +304,13 @@ export const projects: Project[] = [
   {
     name: "Siribaan Property Group",
     description:
-      "A real estate company focused on condos and apartments. I built a modern property platform that makes buying simple, from browsing listings to reaching out about a home.",
-    category: "Client · Real Estate",
+      "A real estate company focused on condos and apartments. As a freelancer, I built a modern property platform that makes buying simple, from browsing listings to reaching out about a home.",
+    category: "Freelance · Real Estate",
     icon: "property",
-    // TODO: adjust to the exact features you built
     features: [
       "Property listings and search",
-      "Detailed property pages",
-      "Enquiry and lead capture",
+      "Admin panel managing 50+ listings",
+      "Inquiry and lead capture",
       "Fast, responsive design",
     ],
     liveDemoLink: "https://siribaanproperty.com",

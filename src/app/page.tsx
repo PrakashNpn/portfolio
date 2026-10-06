@@ -27,7 +27,9 @@ export default function Home() {
       />
       <NeuralNetwork className="pointer-events-none fixed inset-0 -z-10 h-full w-full" />
 
-      <div className="relative z-0">
+      {/* overflow-x-clip: scroll-reveal cards start translated sideways; without
+          this they widen the layout viewport on phones (menu button pushed off). */}
+      <div className="relative z-0 overflow-x-clip">
         <Navbar />
         <Hero />
         <About />
