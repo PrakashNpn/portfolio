@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, JetBrains_Mono } from "next/font/google";
 import { Toaster } from "react-hot-toast";
+import { Analytics } from "@vercel/analytics/next";
 import { profile } from "@/content/site";
 import AiAssistant from "@/components/ui/AiAssistant";
 import { ResumeModalProvider } from "@/components/ui/ResumeModal";
@@ -91,6 +92,7 @@ export default function RootLayout({
             },
           }}
         />
+        <Analytics />
       </body>
     </html>
   );
