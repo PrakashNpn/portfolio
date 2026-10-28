@@ -9,7 +9,7 @@ export const alt = `${profile.name}, ${profile.role}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const STACK = ["Next.js", "TypeScript", "Supabase", "Claude API", "RAG", "n8n"];
+const STACK = ["Next.js", "FastAPI", "Claude API", "RAG", "pgvector", "n8n"];
 
 const font = (file: string) =>
   readFile(join(process.cwd(), "src/app/_fonts", file));
@@ -62,7 +62,7 @@ export default async function Image() {
               color: "#7de3cf",
             }}
           >
-            AI ENGINEER · FULL-STACK DEVELOPER
+            {profile.role.toUpperCase()}
           </div>
         </div>
         <div style={{ fontSize: 24, color: "#aaa6c3" }}>
@@ -89,8 +89,8 @@ export default async function Image() {
             lineHeight: 1.25,
           }}
         >
-          Full-Stack &amp; AI Developer who turns real business problems into
-          production software.
+          LLM apps, agents &amp; automation.
+          Built for real business problems.
         </div>
       </div>
 

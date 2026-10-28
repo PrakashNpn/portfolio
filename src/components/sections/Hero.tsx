@@ -83,7 +83,7 @@ export default function Hero() {
             className="mb-4 flex items-center gap-2.5 font-mono text-[12px] uppercase tracking-[0.2em] text-[#7de3cf] sm:text-[13px]"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-[#00cea8] shadow-[0_0_10px_2px_rgba(0,206,168,0.6)]" />
-            AI Engineer · Full-Stack Developer
+            {profile.role}
           </motion.p>
 
           <motion.h1
@@ -98,7 +98,7 @@ export default function Hero() {
 
           <motion.div variants={item} className={`${styles.heroHeadText} mt-5`}>
             <span className="flex flex-wrap items-end gap-x-3">
-              <span>I build</span>
+              <span>{profile.headline[0]}</span>
               <span className="word-slide text-[#8b67f7]">
                 <span className="word-slide-inner">
                   {words.map((word, index) => (
@@ -108,10 +108,13 @@ export default function Hero() {
               </span>
             </span>
             <span className="mt-1 block">
-              that solve real <br className="hidden lg:inline" />
-              problems.
+              {profile.headline[1]}
             </span>
           </motion.div>
+
+          <motion.p variants={item} className="mt-4 text-[14px] text-secondary sm:text-[16px]">
+            {profile.specialty}
+          </motion.p>
 
           <motion.div
             variants={item}

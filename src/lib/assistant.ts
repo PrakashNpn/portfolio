@@ -4,11 +4,13 @@ import {
   experiences,
   projects,
   aiApproach,
+  education,
+  languages,
 } from "@/content/site";
 
 /** Starter prompts shown in the assistant when the conversation is empty. */
 export const SUGGESTED_QUESTIONS = [
-  "What AI projects has Thi Han built?",
+  "What does JobFit AI do?",
   "What's his tech stack?",
   "Is he open to new roles?",
   "How does he build with AI?",
@@ -38,7 +40,10 @@ export function buildSystemPrompt(): string {
       (p) =>
         `- ${p.name} [${p.category}]${p.badge ? ` (${p.badge})` : ""}: ${p.description}\n` +
         `    Built: ${p.features.join("; ")}` +
-        (p.liveDemoLink ? `\n    Live: ${p.liveDemoLink}` : "")
+        (p.stack ? `\n    Stack: ${p.stack.join(", ")}` : "") +
+        (p.results ? `\n    Results: ${p.results.map((r) => `${r.value}: ${r.label}`).join("; ")}` : "") +
+        (p.liveDemoLink ? `\n    Live: ${p.liveDemoLink}` : "") +
+        (p.sourceCodeLink ? `\n    Source: ${p.sourceCodeLink}` : "")
     )
     .join("\n");
 
@@ -73,6 +78,12 @@ ${exp}
 
 === PROJECTS ===
 ${projs}
+
+=== EDUCATION ===
+${education.map((e) => `- ${e.qualification}, ${e.institution} (${e.date})`).join("\n")}
+
+=== LANGUAGES ===
+${languages.map((l) => `${l.name}: ${l.proficiency}`).join("; ")}
 
 === HOW HE BUILDS WITH AI ===
 ${ai}`;

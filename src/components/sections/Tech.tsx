@@ -72,7 +72,7 @@ function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
       ref={ref}
       onMouseMove={handleMouseMove}
       variants={fadeIn("up", "spring", index * 0.15, 0.6)}
-      className={`group relative h-full overflow-hidden rounded-2xl border p-6 shadow-card transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_50px_-12px_rgba(145,94,255,0.4)] ${
+      className={`group relative h-full overflow-hidden rounded-2xl border p-6 shadow-card sm:p-8 transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_50px_-12px_rgba(145,94,255,0.4)] ${
         group.featured
           ? "border-[#915EFF]/40 bg-[#915EFF]/[0.08] hover:border-[#915EFF]/70"
           : "border-white/10 bg-black-100/55 hover:border-[#915EFF]/50"
@@ -89,10 +89,10 @@ function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
       />
 
       <div className="relative">
-        <div className="mb-5 flex items-center justify-between gap-2">
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
           <h3 className="flex items-center gap-3 text-[16px] font-bold text-white">
             <span
-              className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-[#b49ef5] ring-1 transition-colors duration-300 group-hover:bg-[#915EFF]/25 group-hover:text-white ${
+              className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-[#b49ef5] ring-1 transition-colors duration-300 group-hover:bg-[#915EFF]/25 group-hover:text-white ${
                 group.featured
                   ? "bg-[#915EFF]/25 ring-[#915EFF]/40"
                   : "bg-[#915EFF]/15 ring-[#915EFF]/25"
@@ -103,7 +103,7 @@ function SkillCard({ group, index }: { group: SkillGroup; index: number }) {
             {group.title}
           </h3>
           {group.featured && (
-            <span className="shrink-0 rounded-full bg-[#915EFF]/20 px-1.5 py-1 font-mono text-[8px] font-semibold uppercase tracking-wider text-[#c4b5ff] ring-1 ring-[#915EFF]/40">
+            <span className="shrink-0 rounded-full bg-[#915EFF]/20 px-1.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-[#c4b5ff] ring-1 ring-[#915EFF]/40">
               Core focus
             </span>
           )}
@@ -133,7 +133,7 @@ function Tech() {
         </h2>
       </motion.div>
 
-      <div className="mt-14 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="mt-12 grid gap-6 md:grid-cols-2">
         {skillGroups.map((group, i) => (
           <SkillCard key={group.title} group={group} index={i} />
         ))}

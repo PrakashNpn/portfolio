@@ -28,6 +28,18 @@ function isRateLimited(ip: string): boolean {
 
 type ClientMessage = { role: "user" | "assistant"; content: string };
 
+function isClientMessage(value: unknown): value is ClientMessage {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    "role" in value &&
+    (value.role === "user" || value.role === "assistant") &&
+    "content" in value &&
+    typeof value.content === "string" &&
+    value.content.trim().length > 0
+  );
+}
+
 export async function POST(req: Request) {
   // Graceful fallback: works the moment ANTHROPIC_API_KEY is set in .env.local.
   if (!process.env.ANTHROPIC_API_KEY) {
@@ -55,20 +67,27 @@ export async function POST(req: Request) {
     );
   }
 
-  let body: { messages?: ClientMessage[] };
+  let body: unknown;
   try {
     body = await req.json();
   } catch {
     return Response.json({ error: "bad_request" }, { status: 400 });
   }
 
-  const messages = (Array.isArray(body.messages) ? body.messages : [])
-    .filter(
-      (m) =>
-        (m.role === "user" || m.role === "assistant") &&
-        typeof m.content === "string" &&
-        m.content.trim().length > 0
-    )
+  if (
+    typeof body !== "object" ||
+    body === null ||
+    !("messages" in body) ||
+    !Array.isArray(body.messages) ||
+    !body.messages.every(isClientMessage)
+  ) {
+    return Response.json(
+      { error: "bad_request", message: "Expected an array of valid chat messages." },
+      { status: 400 }
+    );
+  }
+
+  const messages = body.messages
     .slice(-MAX_MESSAGES)
     .map((m) => ({ role: m.role, content: m.content.slice(0, MAX_CHARS) }));
 

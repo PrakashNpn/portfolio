@@ -36,12 +36,14 @@ export type Project = {
   description: string;
   /** short context label, e.g. "Client · Education" */
   category: string;
-  /** icon key: "game" | "education" | "property" */
+  /** icon key: "ai" | "education" | "property" */
   icon: string;
   /** key features you built, shown as chips */
   features: string[];
   /** optional badge shown on the tile, e.g. "AI-Powered" */
   badge?: string;
+  stack?: string[];
+  results?: { value: string; label: string }[];
   /** live site URL */
   liveDemoLink?: string;
   /** source repo URL (optional, client work usually has none) */
@@ -73,7 +75,9 @@ export type AiApproach = {
 export type Profile = {
   name: string;
   role: string;
-  /** shown in the hero: "Shaping <words> into ..." */
+  specialty: string;
+  summary: string;
+  /** Main hero headline, before and after the rotating words. */
   headline: string[];
   /** short paragraph for the About section */
   about: string;
@@ -84,3 +88,12 @@ export type Profile = {
   resumeUrl: string;
   avatar: string;
 };
+
+export type Education = {
+  qualification: string;
+  institution: string;
+  date: string;
+  certificateUrl?: string;
+};
+
+export type Language = { name: string; proficiency: string };

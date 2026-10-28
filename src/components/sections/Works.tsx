@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, type MouseEvent } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
 import { styles } from "@/lib/styles";
 import { fadeIn, textVariant } from "@/lib/motion";
 import { projects } from "@/content/site";
@@ -68,8 +68,8 @@ function ProjectTile({
   featured?: boolean;
   className?: string;
 }) {
-  const ref = useRef<HTMLAnchorElement>(null);
-  const href = project.liveDemoLink || project.sourceCodeLink || "#";
+  const ref = useRef<HTMLElement>(null);
+  const reducedMotion = useReducedMotion();
 
   const rotateX = useMotionValue(0);
   const rotateY = useMotionValue(0);
@@ -77,14 +77,15 @@ function ProjectTile({
   const rX = useSpring(rotateX, spring);
   const rY = useSpring(rotateY, spring);
 
-  const handleMouseMove = (e: MouseEvent<HTMLAnchorElement>) => {
+  const handleMouseMove = (e: MouseEvent<HTMLElement>) => {
     const el = ref.current;
-    if (!el) return;
+    if (!el || reducedMotion) return;
     const rect = el.getBoundingClientRect();
     const px = (e.clientX - rect.left) / rect.width - 0.5;
     const py = (e.clientY - rect.top) / rect.height - 0.5;
-    rotateY.set(px * MAX_TILT * 2);
-    rotateX.set(-py * MAX_TILT * 2);
+    const tilt = featured ? 1.5 : MAX_TILT / 2;
+    rotateY.set(px * tilt * 2);
+    rotateX.set(-py * tilt * 2);
   };
 
   const handleMouseLeave = () => {
@@ -92,105 +93,100 @@ function ProjectTile({
     rotateY.set(0);
   };
 
-  const topRow = (
-    <div className="flex items-start justify-between gap-4">
-      <div className="flex flex-wrap items-center gap-2">
-        <span className="inline-flex items-center rounded-full bg-[#915EFF]/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#c4b5ff] ring-1 ring-[#915EFF]/30">
-          {project.category}
-        </span>
-        {project.badge && (
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#915EFF]/30 to-[#00cea8]/25 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-white ring-1 ring-white/20">
-            <SparkIcon />
-            {project.badge}
-          </span>
-        )}
-      </div>
-      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/5 text-white/80 ring-1 ring-white/10 transition-colors duration-300 group-hover:bg-[#915EFF] group-hover:text-white">
-        <ArrowUpRight />
-      </span>
-    </div>
-  );
-
-  const visitLink = (
-    <span className="flex items-center gap-1.5 text-[13px] font-semibold text-[#b49ef5] transition-colors duration-300 group-hover:text-white">
-      Visit website
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
-        aria-hidden
-      >
-        <path d="M5 12h14M13 6l6 6-6 6" />
-      </svg>
-    </span>
-  );
-
   return (
-    <motion.a
+    <motion.article
       ref={ref}
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      variants={fadeIn("up", "spring", index * 0.12, 0.6)}
-      whileHover={{ scale: 1.015 }}
+      variants={fadeIn("up", "spring", index * 0.1, 0.6)}
+      whileHover={reducedMotion ? undefined : { y: -4 }}
       style={{ rotateX: rX, rotateY: rY, transformPerspective: 1000 }}
-      className={`group relative flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-black-100/55 shadow-card transition-[border-color,box-shadow] duration-300 hover:border-[#915EFF]/50 hover:shadow-[0_24px_60px_-15px_rgba(145,94,255,0.45)] ${
-        featured ? "p-8 md:p-10" : "p-7"
+      className={`group relative min-w-0 overflow-hidden rounded-3xl border shadow-card transition-[border-color,box-shadow] duration-300 hover:border-[#915EFF]/50 hover:shadow-[0_24px_60px_-15px_rgba(145,94,255,0.3)] ${
+        featured
+          ? "border-[#915EFF]/35 bg-black-100/80 p-7 sm:p-9 lg:p-10"
+          : "border-white/10 bg-black-100/60 p-7"
       } ${className}`}
     >
-      {/* Corner glow */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-14 -top-14 h-44 w-44 rounded-full bg-[#915EFF]/20 blur-3xl transition-opacity duration-300 group-hover:bg-[#915EFF]/30"
-      />
-
-      <div className="relative flex h-full flex-col">
-        {topRow}
-        <h3
-          className={`font-bold text-white ${
-            featured ? "mt-6 text-[28px] md:text-[34px]" : "mt-5 text-[20px]"
-          }`}
-        >
-          {project.name}
-        </h3>
-        <p
-          className={`text-pretty text-white/70 ${
-            featured
-              ? "mt-3 text-[15px] leading-[26px]"
-              : "mt-2 line-clamp-3 text-[13px] leading-[21px]"
-          }`}
-        >
-          {project.description}
+      <div aria-hidden className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-[#915EFF]/10 blur-3xl" />
+      {featured && (
+        <p className="relative mb-6 flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[#7de3cf]">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#00cea8]" />
+          Featured project
         </p>
-
-        {featured ? (
-          <div className="mt-auto pt-7">
-            <p className="mb-3 text-[12px] font-semibold uppercase tracking-wider text-secondary">
-              What I built
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {project.features.map((feature) => (
-                <span
-                  key={feature}
-                  className="inline-flex items-center gap-1.5 rounded-md bg-white/[0.06] px-2.5 py-1 text-[12px] text-white/80 ring-1 ring-white/10"
-                >
-                  <CheckIcon />
-                  {feature}
-                </span>
-              ))}
-            </div>
+      )}
+      <div className={`relative flex h-full flex-col ${featured ? "lg:grid lg:h-auto lg:grid-cols-[1.1fr_1fr] lg:gap-12" : ""}`}>
+        <div className="flex min-w-0 flex-col">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="rounded-full bg-[#915EFF]/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#c4b5ff] ring-1 ring-[#915EFF]/25">
+              {project.category}
+            </span>
+            {project.badge && (
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#00cea8]/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#7de3cf] ring-1 ring-[#00cea8]/20">
+                <SparkIcon />{project.badge}
+              </span>
+            )}
           </div>
-        ) : (
-          <div className="mt-auto pt-5">{visitLink}</div>
-        )}
+          <h3 className={`mt-5 font-bold leading-tight text-white ${featured ? "text-[32px] sm:text-[40px]" : "text-[22px]"}`}>
+            {project.name}
+          </h3>
+          <p className={`mt-3 text-pretty leading-[26px] text-white/65 ${featured ? "max-w-xl text-[16px]" : "text-[14px]"}`}>
+            {project.description}
+          </p>
+          {featured && <ProjectLinks project={project} featured />}
+        </div>
+
+        <div className={`flex min-w-0 flex-1 flex-col ${featured ? "mt-7 rounded-2xl border border-white/10 bg-white/[0.025] p-5 sm:p-6 lg:mt-0" : "mt-6"}`}>
+          <h4 className="font-mono text-[10px] uppercase tracking-[0.18em] text-secondary">What I built</h4>
+          <ul className="mt-4 space-y-2.5">
+            {project.features.map((feature) => (
+              <li key={feature} className="flex items-start gap-2.5 text-[13px] leading-[21px] text-white/80">
+                <span className="mt-1"><CheckIcon /></span>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+          {project.stack && (
+            <div className="mt-auto pt-6">
+              <div className="flex flex-wrap gap-1.5 border-t border-white/10 pt-4" aria-label="Technologies used">
+                {project.stack.map((tech) => (
+                  <span key={tech} className="rounded-md bg-white/[0.05] px-2 py-1 font-mono text-[10px] text-secondary">{tech}</span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+        {!featured && <ProjectLinks project={project} />}
       </div>
-    </motion.a>
+    </motion.article>
+  );
+}
+
+function ProjectLinks({ project, featured = false }: { project: Project; featured?: boolean }) {
+  return (
+    <div className={`flex flex-wrap items-center gap-4 ${featured ? "mt-7" : "mt-6 border-t border-white/10 pt-5"}`}>
+      {project.liveDemoLink && (
+        <a
+          href={project.liveDemoLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Visit ${project.name}`}
+          className={`inline-flex items-center gap-2 text-[13px] font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#915EFF] ${featured ? "rounded-xl bg-[#915EFF] px-5 py-3 text-white hover:bg-[#7c47ff]" : "text-[#b49ef5] hover:text-white"}`}
+        >
+          Visit website <ArrowUpRight />
+        </a>
+      )}
+      {project.sourceCodeLink && (
+        <a
+          href={project.sourceCodeLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`View ${project.name} source on GitHub`}
+          className="inline-flex items-center gap-2 text-[13px] font-semibold text-secondary transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#915EFF]"
+        >
+          View source <ArrowUpRight />
+        </a>
+      )}
+    </div>
   );
 }
 
@@ -204,23 +200,18 @@ function Works() {
         <h2 className={styles.sectionHeadText}>Projects.</h2>
       </motion.div>
 
-      <div className="mt-12 flex flex-col gap-5 lg:flex-row lg:items-stretch">
-        <ProjectTile
-          project={featured}
-          index={0}
-          featured
-          className="lg:w-[58%]"
-        />
-        <div className="flex flex-1 flex-col gap-5">
-          {rest.map((project, i) => (
-            <ProjectTile
-              key={project.name}
-              project={project}
-              index={i + 1}
-              className="flex-1"
-            />
-          ))}
-        </div>
+      <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {featured && (
+          <ProjectTile project={featured} index={0} featured className="md:col-span-2 xl:col-span-3" />
+        )}
+        {rest.map((project, i) => (
+          <ProjectTile
+            key={project.name}
+            project={project}
+            index={i + 1}
+            className={rest.length % 2 === 1 && i === rest.length - 1 ? "md:col-span-2 xl:col-span-1" : ""}
+          />
+        ))}
       </div>
     </>
   );

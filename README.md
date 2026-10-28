@@ -23,7 +23,7 @@ npm run build && npm start   # production
 **Everything you'll want to change lives in one file:** [`src/content/site.ts`](src/content/site.ts).
 
 It holds your profile, social links, hero words, skill groups, experience,
-projects, and the "How I build with AI" content — all typed.
+projects, education, languages, and the "How I build with AI" content — all typed.
 
 - **Images** live in [`public/`](public/) (`company/`, `services/`, `profile/`,
   `icons/`). Reference them by path, e.g. `/company/mmRoute.png`.
@@ -97,7 +97,7 @@ src/
 │   └── layout.tsx, page.tsx, globals.css
 ├── content/site.ts         SINGLE source of truth for all copy/data
 ├── components/
-│   ├── sections/   Hero, About, Experience, Tech, AiWorkflow, Works, Contact
+│   ├── sections/   Hero, About, Experience, Tech, AiWorkflow, Works, Education, Contact
 │   ├── canvas/     ComputersScene (the one WebGL canvas) + NeuralNetwork (2D
 │   │               background) + Lazy3D gate / CanvasBoundary
 │   └── ui/         Navbar, Footer, AiAssistant, ResumeModal, CtaButton,

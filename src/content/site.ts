@@ -2,11 +2,10 @@
  * ============================================================================
  *  SINGLE SOURCE OF TRUTH FOR ALL SITE CONTENT
  * ============================================================================
- *  This is the ONLY file you need to edit to update your portfolio's content.
- *  Every section reads from the exports below. Items marked `TODO:` are
- *  seeded from your old site and should be reviewed / updated.
+ *  Shared portfolio data for page sections, metadata and the AI assistant.
+ *  Keep resume facts here so updates stay consistent across the site.
  *
- *  Images live under /public — reference them by their path (e.g. "/tech/reactjs.png").
+ *  Images live under /public — reference them by their path (e.g. "/company/mmRoute.png").
  * ============================================================================
  */
 
@@ -19,16 +18,19 @@ import type {
   HeroWord,
   SocialLink,
   AiApproach,
+  Education,
+  Language,
 } from "@/types/content";
 
 /* --------------------------------------------------------------------------
- *  PROFILE  — TODO: review and update with your current details
+ *  PROFILE
  * ------------------------------------------------------------------------ */
 export const profile: Profile = {
-  name: "Thi Han", // TODO: your full name
+  name: "Thi Han",
   role: "Full-Stack Developer & AI Engineer",
-  // The hero renders: "Shaping <rotating words> into Real Projects that Deliver Results"
-  headline: ["into Real Projects", "that Deliver Results"], // TODO
+  headline: ["I build", "that solve real problems."],
+  specialty: "LLM Apps, Agents & Automation",
+  summary: "Full-Stack & AI Developer building production web apps, LLM features, agents and automation with TypeScript, Python and PHP.",
   about:
     "I'm a full-stack developer with 3+ years of experience turning ideas into " +
     "production web apps, and today most of my work sits where solid engineering " +
@@ -59,7 +61,7 @@ export const navLinks: NavLink[] = [
 ];
 
 /* --------------------------------------------------------------------------
- *  SOCIAL LINKS  — TODO: update URLs
+ *  SOCIAL LINKS
  * ------------------------------------------------------------------------ */
 export const socials: SocialLink[] = [
   { name: "GitHub", url: "https://github.com/PrakashNpn", icon: "/icons/github.png" },
@@ -81,10 +83,10 @@ export const heroWords: HeroWord[] = [
  *  HERO STREAMING LINES  (typed out one by one in the terminal tagline)
  * ------------------------------------------------------------------------ */
 export const heroTerminalLines: string[] = [
-  "building AI agents that take real actions",
+  "LLM apps, agents & automation",
   "RAG chatbots grounded in your own data",
   "workflow automations with n8n, Claude & tool-use",
-  "full-stack apps in Next.js, Node & Postgres",
+  "full-stack apps with Next.js, FastAPI & Laravel",
 ];
 
 /* --------------------------------------------------------------------------
@@ -108,23 +110,19 @@ export const aiApproach: AiApproach = {
     },
     {
       label: "Reason & act",
-      desc: "Claude plans, calls real tools and APIs, and takes actions.",
+      desc: "Use structured outputs, tool calls and APIs to turn model responses into useful actions.",
       icon: "reason",
     },
     {
       label: "Verify",
-      desc: "Human-in-the-loop checks and evals before anything ships.",
+      desc: "Evaluate model accuracy and cost, test APIs and UI flows, and keep human review where it matters.",
       icon: "verify",
     },
   ],
   stack: [
-    "Claude / Anthropic API",
-    "RAG & Vector DBs",
-    "Embeddings",
-    "Tool-use / function calling",
-    "n8n",
-    "Prompt engineering",
-    "Next.js API routes",
+    "Claude API", "OpenAI API", "LangChain", "RAG & pgvector",
+    "Structured outputs", "Tool use & web search", "Streaming responses",
+    "n8n", "Python / FastAPI", "LLM evaluation",
   ],
   principles: [
     {
@@ -143,90 +141,85 @@ export const aiApproach: AiApproach = {
 };
 
 /* --------------------------------------------------------------------------
- *  SKILL GROUPS  (About section — categorized technical skills)
- *  TODO: add/remove skills as you grow.
+ *  SKILL GROUPS
  * ------------------------------------------------------------------------ */
 export const skillGroups: SkillGroup[] = [
   {
-    title: "Applied AI & Automation",
+    title: "AI & Automation",
     icon: "ai",
     featured: true,
     skills: [
-      "Claude Code",
+      "Claude API",
+      "OpenAI API",
+      "Gemini",
+      "LangChain",
+      "RAG",
+      "pgvector",
+      "Structured Outputs",
+      "Tool Use",
+      "Web Search",
+      "Streaming Responses",
+      "Prompt Engineering",
+      "LLM Evaluation",
       "AI Agents",
       "n8n",
-      "Prompt Engineering",
-      "Chatbots",
-      "API Integration",
-      "RAG & Vector DBs",
-      "Automation Workflows",
       "Human-in-the-loop",
+      "Claude Code",
+      "Codex",
     ],
   },
   {
-    title: "Core Development",
+    title: "Frontend",
     icon: "code",
     skills: [
-      "Next.js",
-      "React",
-      "React Native",
       "TypeScript",
       "JavaScript",
-      "PHP",
-      "Python",
+      "React",
+      "Next.js",
+      "React Native",
       "Tailwind CSS",
-      "Framer Motion",
-      "Node.js",
-      "REST APIs",
     ],
   },
   {
-    title: "Data & Platforms",
+    title: "Backend & Data",
     icon: "database",
     skills: [
+      "Python",
+      "FastAPI",
+      "Node.js",
+      "REST APIs",
+      "PHP",
+      "Laravel",
       "Supabase",
       "PostgreSQL",
       "MySQL",
       "MongoDB",
-      "WordPress",
-      "Webflow",
-      "Jira",
-      "ClickUp",
     ],
   },
   {
-    title: "Cloud, DevOps & Tools",
+    title: "Cloud, DevOps & Testing",
     icon: "cloud",
     skills: [
       "Vercel",
+      "Render",
+      "Linux / Cloud VPS",
       "Docker",
-      "Linux",
-      "Cloud VPS",
       "Git",
-      "GitHub",
       "GitHub Actions (CI/CD)",
+      "pytest",
+      "Playwright",
       "Jest",
       "SSH",
+      "WordPress",
       "SEO",
     ],
   },
 ];
 
 /* --------------------------------------------------------------------------
- *  EXPERIENCE  — TODO: review dates / descriptions
+ *  EXPERIENCE
  * ------------------------------------------------------------------------ */
 export const experiences: Experience[] = [
-  {
-    title: "Web Development Intern",
-    companyName: "Marter Solutions, Mandalay",
-    icon: "/company/marterSolutions.png",
-    iconBg: "#383E56",
-    date: "Jul 2020 - Oct 2020",
-    points: [
-      "Supported senior developers on a client project for MRCCI, contributing to frontend and backend tasks.",
-      "Learned team workflows and real-world problem solving on production client work.",
-    ],
-  },
   {
     title: "Junior Full-Stack Developer Intern",
     companyName: "Clouud Solutions, India",
@@ -255,12 +248,12 @@ export const experiences: Experience[] = [
     companyName: "Freelance, Bangkok",
     icon: "/services/freelance.png",
     iconBg: "#E6DEDD",
-    date: "May 2024 - Sep 2025",
+    date: "May 2024 - Present",
     points: [
-      "Built and launched a real estate platform for Siribaan Property Group, with property search, detail pages and inquiry capture.",
-      "Built an admin panel for managing 50+ property listings.",
-      "Integrated Supabase database and storage and owned Vercel deployment and production troubleshooting.",
-      "Delivered a React Native mobile app and SEO-focused WordPress websites for other clients.",
+      "Built Think Asia Education's website with Next.js, TypeScript, Supabase and Tailwind CSS, including CSCA practice tests with a Chinese, Maths, Physics and Chemistry question bank, automatic scoring and results.",
+      "Built and deployed Siribaan Property Group's platform with listing search, detail pages, inquiry capture and an admin panel managing 50+ listings.",
+      "Set up Supabase database and media storage, handled Vercel deployment and resolved production issues.",
+      "Contributed Google Pay payment integration, SEO improvements, WordPress websites and frontend features for a React Native mobile app across other client projects.",
     ],
   },
   {
@@ -270,63 +263,118 @@ export const experiences: Experience[] = [
     iconBg: "#FFFFFF",
     date: "Oct 2025 - Present",
     points: [
-      "Led development of the company's study-abroad platform in Next.js, TypeScript and Supabase, with search across 700+ universities and 60,000+ courses.",
-      "Designed psychometric career assessments that generate AI career and university recommendations and send counselors a profile report of each student's interests, skills and personality.",
+      "Led development of the company's study-abroad platform in five languages with Next.js, TypeScript and Supabase, with search across 700+ universities and 60,000+ courses.",
+      "Designed psychometric career assessments that generate AI career and university recommendations and send counselors a profile report of each student's interests, skills and personality, cutting consultation prep time.",
       "Shipped a RAG-based AI university-advisor chatbot grounded in the platform's university and course data, plus document summarization and PDF report generation.",
-      "Built an n8n agent on the Claude API that drafts replies to university partnership emails for human approval, cutting reply time from ~20 to ~3 min per email.",
+      "Built an n8n agent on the Claude API that reads university partnership emails, extracts requested information into structured fields and drafts replies for human approval, cutting reply time from ~20 to ~3 min per email.",
     ],
   },
 ];
 
 /* --------------------------------------------------------------------------
- *  PROJECTS  — TODO: add live demo links & new projects
+ *  PROJECTS
  * ------------------------------------------------------------------------ */
 export const projects: Project[] = [
   {
     name: "Saturday Education Consulting",
-    description:
-      "The study-abroad platform I build at Saturday Education Consulting. Beyond a clean, trustworthy site, I built the AI layer: a RAG university-advisor chatbot and AI career tools that guide students from choosing a program through applications.",
-    category: "Full-Time · Education",
-    icon: "education",
-    badge: "AI-Powered",
+    description: "A study-abroad platform in five languages with search across 700+ universities and 60,000+ courses, a RAG university advisor, and AI career recommendations with counselor profile reports.",
+    category: "Full-Time · Education", icon: "education", badge: "AI-Powered",
     features: [
-      "Search across 700+ universities and 60,000+ courses",
-      "RAG-based AI university advisor chatbot",
-      "AI career assessment with counselor profile reports",
-      "n8n + Claude partnership email agent",
-      "Job outlook and market research tool",
-      "Study destination guides",
-      "Online consultation booking",
-      "Admin dashboard for students, universities, and leads",
+      "Five-language platform",
+      "700+ universities · 60,000+ courses",
+      "RAG university advisor",
+      "AI career assessments",
+      "Document summaries and PDF reports",
+      "n8n email agent with human approval",
+      "Student, university and lead administration",
+    ],
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Supabase",
+      "Claude API",
+      "n8n",
     ],
     liveDemoLink: "https://saturdayeducation.com",
   },
   {
-    name: "Siribaan Property Group",
-    description:
-      "A real estate company focused on condos and apartments. As a freelancer, I built a modern property platform that makes buying simple, from browsing listings to reaching out about a home.",
-    category: "Freelance · Real Estate",
-    icon: "property",
+    name: "Think Asia Education",
+    description: "An education consultancy website with CSCA practice tests for international students applying to Chinese universities. Includes a question bank for Chinese, Maths, Physics and Chemistry, automatic scoring and results.",
+    category: "Freelance · Education", icon: "education",
     features: [
-      "Property listings and search",
-      "Admin panel managing 50+ listings",
-      "Inquiry and lead capture",
-      "Fast, responsive design",
+      "Education consultancy website",
+      "CSCA practice tests",
+      "Four-subject question bank",
+      "Automatic scoring and results",
+    ],
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Supabase",
+      "Tailwind CSS",
+    ],
+    liveDemoLink: "https://thinkasiaeducation.com",
+  },
+  {
+    name: "Siribaan Property Group",
+    description: "A live real estate platform with property search, detail pages and inquiry capture. Includes an admin panel managing 50+ listings, Supabase media storage, and a responsive, animated interface.",
+    category: "Freelance · Real Estate", icon: "property",
+    features: [
+      "Property search and detail pages",
+      "Admin panel for 50+ listings",
+      "Inquiry capture",
+      "Database and media storage",
+    ],
+    stack: [
+      "Supabase",
+      "Vercel",
     ],
     liveDemoLink: "https://siribaanproperty.com",
   },
   {
-    name: "Game Info Website",
-    description:
-      "A responsive web app for browsing and discovering games. Users can search by genre, platform, and release details through a clean, intuitive interface.",
-    category: "Personal · Web App",
-    icon: "game",
-    // TODO: adjust to the exact features you built
+    name: "JobFit AI",
+    description: "An AI job-matching app that scores jobs against a resume, explains skill gaps and deal-breakers, streams tailored cover letters, and searches a city's job boards to rank current postings by fit.",
+    category: "Personal · AI Application", icon: "ai", badge: "AI-Powered",
     features: [
-      "Game search and discovery",
-      "Genre and platform filters",
-      "Detailed game info pages",
+      "Resume-to-job fit scoring (0–100)",
+      "Skill gaps and deal-breakers",
+      "Streaming cover letters",
+      "Live job search ranked by fit",
+      "RAG with LangChain and pgvector",
     ],
-    liveDemoLink: "https://thihan-gameinfo.netlify.app/",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Python",
+      "FastAPI",
+      "Pydantic",
+      "Claude API",
+      "LangChain",
+      "pgvector",
+    ],
+    liveDemoLink: "https://jobfit-ai-plum.vercel.app",
+    sourceCodeLink: "https://github.com/PrakashNpn/jobfit-ai",
   },
+];
+
+export const education: Education[] = [
+  {
+    qualification: "B.Sc. Information Technology",
+    institution: "European International University (Online)",
+    date: "Oct 2022 - Feb 2024",
+    certificateUrl: "https://drive.google.com/file/d/1nV2AtKMZr39rlOMpaIih5tT-AEiSCiU_/view?usp=sharing",
+  },
+  {
+    qualification: "Computer Science coursework (3 years)",
+    institution: "Computer University Mandalay",
+    date: "2016 - 2020",
+  },
+];
+
+export const languages: Language[] = [
+  { name: "Burmese", proficiency: "Native" },
+  { name: "English", proficiency: "Professional" },
+  { name: "Hindi", proficiency: "Professional" },
+  { name: "Nepali", proficiency: "Professional" },
+  { name: "Thai", proficiency: "Beginner" },
 ];

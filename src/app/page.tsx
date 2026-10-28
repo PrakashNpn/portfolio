@@ -7,6 +7,7 @@ import Tech from "@/components/sections/Tech";
 import AiWorkflow from "@/components/sections/AiWorkflow";
 import Works from "@/components/sections/Works";
 import Contact from "@/components/sections/Contact";
+import Education from "@/components/sections/Education";
 import NeuralNetwork from "@/components/canvas/NeuralNetwork";
 
 export default function Home() {
@@ -37,6 +38,7 @@ export default function Home() {
         <Tech />
         <AiWorkflow />
         <Works />
+        <Education />
         <Contact />
         <Footer />
       </div>

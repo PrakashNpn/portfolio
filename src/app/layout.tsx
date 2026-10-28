@@ -25,9 +25,7 @@ const jetbrainsMono = JetBrains_Mono({
 const SITE_URL = "https://thihan-portfolio.vercel.app";
 
 // Search results show ~155 characters, so this is a short pitch, not the full bio.
-const DESCRIPTION =
-  "Thi Han is a Full-Stack & AI Developer in Bangkok who turns real business problems " +
-  "into production web apps and LLM-powered features.";
+const DESCRIPTION = `${profile.name}: ${profile.summary}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -45,6 +43,12 @@ export const metadata: Metadata = {
     "Next.js",
     "TypeScript",
     "Supabase",
+    "Python",
+    "FastAPI",
+    "Laravel",
+    "OpenAI API",
+    "LangChain",
+    "pgvector",
     "Claude API",
     "RAG",
     "LLM",
